@@ -1,0 +1,3 @@
+install-qt-binding
+numpy
+opencv-python
