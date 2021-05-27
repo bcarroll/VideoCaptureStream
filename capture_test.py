@@ -2,7 +2,11 @@ import sys
 import numpy as np
 import cv2
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QWidget, QApplication, QLabel, QGridLayout, QDesktopWidget
+from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QGridLayout
+from PyQt5.QtWidgets import QDesktopWidget
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, Qt, QThread
 from time import sleep
@@ -31,7 +35,7 @@ class VideoThread(QThread):
                 self.change_pixmap_signal.emit(cv_img)
             sleep(self.screen_update_delay)
         cap.release()
-    
+
     def stop(self):
         self._run_flag = False
         self.wait()
@@ -56,7 +60,7 @@ class CaptureWindow(QWidget):
         self.thread = VideoThread()
         self.thread.change_pixmap_signal.connect(self.update_hdmi_display)
         self.thread.start()
-        
+
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Up:
             print("KeyUp")
